@@ -51,13 +51,13 @@ const app = Vue.createApp({
     },
     async onDelete(id) {
       this.items.map((item) => (item.isItemMenuOpen = false));
-      this.items = this.items.filter((item) => item.uuid !== id);
       await fetch(`${url}/${id}`, {
         method: "DELETE",
         headers: {
           "api-key": API_KEY,
         },
       });
+      this.items = this.items.filter((item) => item.uuid !== id);
     },
     onClick(e) {
       if (
