@@ -1,0 +1,296 @@
+@background-color: #f5f5f5;
+@container-color: #ffffff;
+@primary-color: #002844;
+@secondary-color: #ff5093;
+@tertiary-color: #67889f;
+@quaternary-color: #ccd7df;
+
+@primary-font: "Open Sans", sans-serif;
+@mobile-breakpoint: 768px;
+
+body {
+  background: @background-color;
+  margin: 0;
+  font-family: @primary-font;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 120%;
+  letter-spacing: 0.25px;
+  margin-top: 0;
+  color: @primary-color;
+}
+
+.OuterListContainer {
+  position: relative;
+  background-color: @container-color;
+  min-height: 80%;
+  min-width: 50%;
+  padding: 30px 30px 30px 30px;
+  box-shadow: 1px 1px 0px rgba(0, 40, 68, 0.09),
+    0px 13.59px 47.8684px -26.89px rgba(2, 57, 95, 0.2),
+    0px 24.13px 50.97px -29.28px rgba(2, 57, 95, 0.23);
+  border-radius: 16.8947px;
+}
+
+.ExitBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.exit-btn {
+  content: url("./assets/x.svg");
+  opacity: 0.7;
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+}
+
+.TableHeadContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr 1fr;
+
+  .TableHead {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: @primary-color;
+    margin-bottom: 2vh;
+  }
+  .listHead2 {
+    text-align: end;
+  }
+}
+
+.InnerListContainer {
+  border-bottom: 1px solid #b5c5d0;
+
+  .TableBodyContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+    align-items: center;
+    .TableData {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 120%;
+      letter-spacing: 0.25px;
+      color: @primary-color;
+      margin-bottom: 10px;
+    }
+    .itemData3 {
+      text-align: end;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+    .checkboxDiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 28px;
+      width: 28px;
+      border: 1px solid @primary-color;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover {
+        background: @background-color;
+        border: 1px solid @tertiary-color;
+      }
+      &:active {
+        background: #ccd7df;
+        border: 1px solid @tertiary-color;
+      }
+    }
+    input[type="checkbox"]:checked + .checkboxDiv {
+      background: no-repeat center/70% url(./assets/stroke.svg), @primary-color;
+    }
+
+    .itemData4 {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      .moreOptionsBtnDiv {
+        content: url("./assets/moreOptionsBtn.svg");
+
+        &:hover {
+          cursor: pointer;
+
+          content: url("./assets/moreOptionsBtnSelected.svg");
+        }
+      }
+      #onActiveMoreOptionsBtnDiv {
+        content: url("./assets/moreOptionsBtnSelected.svg");
+      }
+      .moreOptionsDiv {
+        position: absolute;
+        top: 120%;
+        left: 60%;
+        min-width: 232px;
+        min-height: 105px;
+
+        z-index: 1;
+        background-color: #ffffff;
+        box-shadow: 1px 1px 0px rgba(0, 40, 68, 0.09),
+          -32.3816px -1.40789px 47.8684px -16.8947px rgba(2, 57, 95, 0.28),
+          -64.7632px 59.1316px 30.9737px -49.2763px rgba(2, 57, 95, 0.23);
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .moreOptionsTitleAndExitBtnDiv {
+          display: none;
+
+          .menuItemTitle {
+            text-align: start;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 150%;
+            letter-spacing: 0.5px;
+            color: @primary-color;
+          }
+        }
+        .menuItem1,
+        .menuItem2 {
+          width: 100%;
+          display: inline-grid;
+          grid-template-columns: 25% 75%;
+          justify-items: center;
+          // align-items: flex-start;
+          padding: 10px 0;
+          &:hover {
+            cursor: pointer;
+            background: @quaternary-color;
+          }
+          .menuItemText1,
+          .menuItemText2 {
+            width: 100%;
+            text-align: start;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+          }
+          .menuItemText1 {
+            color: @primary-color;
+          }
+          .menuItemText2 {
+            color: @secondary-color;
+          }
+          .menuItemIcon1 {
+            content: url("./assets/calendarIcon.svg");
+          }
+          .menuItemIcon2 {
+            content: url("./assets/xPink.svg");
+          }
+        }
+      }
+    }
+  }
+}
+
+.DoneBtnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+button {
+  width: 130px;
+  height: 46px;
+  background: @primary-color;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+  color: white;
+  border: none;
+  &:hover {
+    background-color: lighten(@primary-color, 5%);
+  }
+}
+
+@media only screen and (max-width: @mobile-breakpoint) {
+  .OuterListContainer {
+    min-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1em 0;
+    .ExitBtnContainer,
+    h1,
+    .TableHeadContainer {
+      padding: 0 2vw;
+    }
+    .TableHeadContainer {
+      grid-template-columns: 1fr 1fr 3fr 1fr;
+    }
+    .InnerListContainer {
+      padding: 2vw;
+      max-height: 80vh;
+      overflow-y: scroll;
+      .TableData {
+        font-size: 14px;
+        line-height: 150%;
+        align-items: center;
+      }
+      .itemData4 {
+        position: static;
+        .moreOptionsDiv {
+          position: absolute;
+          width: 100%;
+          top: 70%;
+          left: 0px;
+          right: 0px;
+          height: 30%;
+          justify-content: flex-start;
+          box-shadow: 0px -1px 5px -2px rgba(0, 40, 68, 0.1),
+            0px -30px 51px -15px rgba(2, 57, 95, 0.15);
+          border-radius: 32px 32px 0px 0px;
+          transition: all 1s ease-in-out;
+          .moreOptionsTitleAndExitBtnDiv {
+            display: inline-grid;
+            grid-template-columns: 10% 75% 10%;
+            align-items: center;
+            padding: 20px 0;
+            .menuItemTitle {
+              text-align: start;
+            }
+            .moreOptionsXBtn {
+              align-self: center;
+            }
+          }
+          .menuItemText1,
+          .menuItemText2 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+    .DoneBtnContainer {
+      justify-content: center;
+    }
+  }
+}

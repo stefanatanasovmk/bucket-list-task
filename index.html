@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+    <title>Vello Development Task</title>
+  </head>
+  <body>
+    <main id="app">
+      <div v-if="!isListOpen">
+        <button @click="toggleList" class="OpenBtnContainer">Open</button>
+      </div>
+      <div v-else class="OuterListContainer" @click="onClick">
+        <div class="ExitBtnContainer">
+          <div @click="toggleList" class="exit-btn"></div>
+        </div>
+        <h1>Bucket list</h1>
+        <div class="TableHeadContainer">
+          <span class="TableHead listHead1">Done</span>
+          <span></span>
+          <span class="TableHead listHead2">Do before age</span>
+          <span></span>
+        </div>
+        <div class="InnerListContainer">
+          <div class="TableBodyContainer" v-for="item in items">
+            <span class="TableData itemData1">
+              <input v-if="item.done" type="checkbox" checked />
+              <input v-else type="checkbox" />
+              <div
+                @click="onChangeIsDone(item.uuid,item.done)"
+                class="checkboxDiv"
+              ></div>
+            </span>
+            <span class="TableData itemData2">{{item.description}}</span>
+            <span class="TableData itemData3">{{item.do_before}}</span>
+            <span class="TableData itemData4">
+              <div
+                class="moreOptionsBtnDiv"
+                @click="openItemMenu(item.uuid)"
+                :id="item.isItemMenuOpen && 'onActiveMoreOptionsBtnDiv'"
+              ></div>
+              <div class="moreOptionsDiv" v-if="item.isItemMenuOpen">
+                <div class="moreOptionsTitleAndExitBtnDiv">
+                  <span></span>
+                  <span class="menuItemTitle">{{item.description}}</span>
+                  <span class="exit-btn moreOptionsXBtn"></span>
+                </div>
+                <div class="menuItem1">
+                  <span class="menuItemIcon1"></span>
+                  <span class="menuItemText1">Bucket item action 1</span>
+                </div>
+                <div class="menuItem2" @click="onDelete(item.uuid)">
+                  <span class="menuItemIcon2"></span>
+                  <span class="menuItemText2">Delete bucket item</span>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+        <div class="DoneBtnContainer">
+          <button @click="toggleList">Done</button>
+        </div>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
